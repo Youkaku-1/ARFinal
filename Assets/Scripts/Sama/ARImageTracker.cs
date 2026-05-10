@@ -57,30 +57,21 @@ public class ARImageTracker : MonoBehaviour
     {
         foreach (var trackedImage in eventArgs.added)
         {
-            SpawnPrefab(trackedImage);
+            HandleImageAdded(trackedImage);
         }
 
         foreach (var trackedImage in eventArgs.updated)
         {
-            bool isTracking = trackedImage.trackingState == TrackingState.Tracking;
-
-            if (trackedImage.transform.childCount > 0)
-            {
-                GameObject content = trackedImage.transform.GetChild(0).gameObject;
-                content.SetActive(isTracking);
-
-                content.transform.position = trackedImage.transform.position;
-                content.transform.rotation = trackedImage.transform.rotation;
-            }
+            HandleImageUpdated(trackedImage);
         }
 
         foreach (var pair in eventArgs.removed)
         {
-            Debug.Log("Image removed: " + pair.Value.referenceImage.name);
+            HandleImageRemoved(pair.Value);
         }
     }
 
-    private void SpawnPrefab(ARTrackedImage trackedImage)
+    private void HandleImageAdded(ARTrackedImage trackedImage)
     {
         string imageName = trackedImage.referenceImage.name;
 
@@ -94,5 +85,36 @@ public class ARImageTracker : MonoBehaviour
 
             spawnedContent.transform.SetParent(trackedImage.transform);
         }
+    }
+
+    private void HandleImageUpdated(ARTrackedImage trackedImage)
+    {
+        if (trackedImage.transform.childCount == 0)
+            return;
+
+        GameObject content = trackedImage.transform.GetChild(0).gameObject;
+        Renderer rend = content.GetComponent<Renderer>();
+
+        switch (trackedImage.trackingState)
+        {
+            case TrackingState.Tracking:
+                content.SetActive(true);
+                if (rend != null) rend.material.color = Color.green;
+                break;
+
+            case TrackingState.Limited:
+                content.SetActive(true);
+                if (rend != null) rend.material.color = Color.yellow;
+                break;
+
+            case TrackingState.None:
+                content.SetActive(false);
+                break;
+        }
+    }
+
+    private void HandleImageRemoved(ARTrackedImage trackedImage)
+    {
+        Debug.Log("Image removed: " + trackedImage.referenceImage.name);
     }
 }
