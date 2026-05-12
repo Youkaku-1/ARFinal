@@ -2113,8 +2113,9 @@ GameObject:
   - component: {fileID: 1116878154}
   - component: {fileID: 1116878153}
   - component: {fileID: 1116878152}
+  - component: {fileID: 1116878157}
   m_Layer: 0
-  m_Name: door
+  m_Name: cardoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2235,6 +2236,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 70}
+--- !u!114 &1116878157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116878151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f1dcc792c25454ba928d2aad16af57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
+  animator: {fileID: 1116878152}
 --- !u!1 &1131363235
 GameObject:
   m_ObjectHideFlags: 0
