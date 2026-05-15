@@ -1,0 +1,75 @@
+{
+    "version": 1,
+    "name": "MouseClick",
+    "maps": [
+        {
+            "name": "Mouse",
+            "id": "69acf5de-e73d-4f0f-a885-95c9ca4d7264",
+            "actions": [
+                {
+                    "name": "Spawn",
+                    "type": "Button",
+                    "id": "bdf3b611-4607-4c90-9e38-f87f209eb028",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Enlarge",
+                    "type": "Button",
+                    "id": "57d909a0-aef0-48ec-b4af-c420cccd2e1a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Minimise",
+                    "type": "Button",
+                    "id": "580a880f-720b-423e-9847-d4c91e348008",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "948c1d24-0b74-4308-856a-b07db7cd82a5",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spawn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed061655-0ad5-432b-8b49-caf190a8f17a",
+                    "path": "<Mouse>/forwardButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Enlarge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7507f01f-c643-409a-b91c-b6ab321c1230",
+                    "path": "<Mouse>/backButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Minimise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
