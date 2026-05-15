@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.burst": {
       "version": "1.8.27",
       "depth": 2,
@@ -226,6 +232,14 @@
       "dependencies": {
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
+      }
+    },
+    "com.unity.xr-content.xr-sim-environments": {
+      "version": "file:../ContentPackages/com.unity.xr-content.xr-sim-environments-2.1.1.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.unity.xr.arfoundation": "6.1.0-pre.1"
       }
     },
     "com.unity.xr.arcore": {
