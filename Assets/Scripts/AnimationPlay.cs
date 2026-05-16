@@ -1,55 +1,54 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToggleTwoAnimatorTriggersOnClick : MonoBehaviour
+public class ToggleSpawnedCarAnimatorTriggers : MonoBehaviour
 {
     public Button button;
-    public Animator targetAnimator;
+
+    [Header("Spawned Car Settings")]
+    public string spawnedCarTag = "Car";
 
     [Header("Animator Trigger Names")]
     public string firstTriggerName = "Open";
     public string secondTriggerName = "Close";
 
+    private Animator targetAnimator;
     private bool useFirstTrigger = true;
 
     private void Start()
     {
-        Debug.Log("ToggleTwoAnimatorTriggersOnClick: Start() called");
         if (button != null)
-        {
-            Debug.Log("ToggleTwoAnimatorTriggersOnClick: Button assigned, adding listener");
             button.onClick.AddListener(ToggleTrigger);
-        }
-        else
-        {
-            Debug.LogWarning("ToggleTwoAnimatorTriggersOnClick: Button is NOT assigned!");
-        }
     }
 
     private void ToggleTrigger()
     {
-        Debug.Log("ToggleTwoAnimatorTriggersOnClick: ToggleTrigger() called");
-        
+        FindSpawnedCarAnimator();
+
         if (targetAnimator == null)
         {
-            Debug.LogWarning("ToggleTwoAnimatorTriggersOnClick: Target Animator is not assigned.");
+            Debug.LogWarning("No spawned car Animator found.");
             return;
         }
 
-        Debug.Log("ToggleTwoAnimatorTriggersOnClick: useFirstTrigger = " + useFirstTrigger);
-        
         if (useFirstTrigger)
-        {
-            Debug.Log("ToggleTwoAnimatorTriggersOnClick: Setting trigger '" + firstTriggerName + "'");
             targetAnimator.SetTrigger(firstTriggerName);
-        }
         else
-        {
-            Debug.Log("ToggleTwoAnimatorTriggersOnClick: Setting trigger '" + secondTriggerName + "'");
             targetAnimator.SetTrigger(secondTriggerName);
-        }
 
         useFirstTrigger = !useFirstTrigger;
-        Debug.Log("ToggleTwoAnimatorTriggersOnClick: Toggled. useFirstTrigger is now = " + useFirstTrigger);
+    }
+
+    private void FindSpawnedCarAnimator()
+    {
+        GameObject spawnedCar = GameObject.FindGameObjectWithTag(spawnedCarTag);
+
+        if (spawnedCar == null)
+        {
+            targetAnimator = null;
+            return;
+        }
+
+        targetAnimator = spawnedCar.GetComponentInChildren<Animator>();
     }
 }
